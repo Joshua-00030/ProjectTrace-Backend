@@ -39,7 +39,7 @@ pool.connect((err, client, release) => {
 })
 
 app.post('/testdata/nih', (req, res, next) => {
-	pool.query('Select * from nsf_nih join topics on nsf_nih.topic_id = topics.topic_id where topic_id != -1 order by id limit 20')
+	pool.query('Select * from nsf_nih join topics on nsf_nih.topic_id = topics.topic_id where nsf_nih.topic_id != -1 order by id limit 20')
 		.then(testData => {
 			res.send(testData.rows);
 		})
